@@ -1,4 +1,7 @@
 import express, { Express, Request, Response } from 'express';
+import { API_KEY } from './config';
+
+console.log(API_KEY);
 
 const app = express();
 
