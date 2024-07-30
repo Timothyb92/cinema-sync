@@ -1,26 +1,33 @@
-import express, { Express, Request, Response } from 'express';
-import { API_KEY } from './config';
-import axios from 'axios';
+// import express, { Express, Request, Response } from 'express';
+// import { API_KEY } from './config';
+// import axios from 'axios';
 
-console.log(API_KEY);
+// console.log(API_KEY);
 
-const app = express();
+// const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
-app.listen(3000, () => {
-  console.log('listening on 3000');
-});
+// app.listen(3000, () => {
+//   console.log('listening on 3000');
+// });
 
-app.get('/', (req, res) => {
-  res.send(`ROOT get`);
-});
+// app.get('/', (req, res) => {
+//   res.send(`ROOT get`);
+// });
 
-app.get('/test', async (req, res) => {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&query=street-fighter`;
+//
+import http from 'http';
+import app from './app';
 
-  const results = (await axios.get(url)).data;
-  console.log(results);
-  console.log('HIT ENDPOINT');
-  return await res.json(results);
-});
+const server = http.createServer(app);
+
+const PORT = 3000;
+
+async function startServer() {
+  server.listen(PORT, () => {
+    console.log(`index.ts listening on port ${PORT}`);
+  });
+}
+
+startServer();
