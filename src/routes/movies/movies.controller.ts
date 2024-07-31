@@ -11,7 +11,5 @@ export async function httpGetMovies(
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&query=${movieTitle}`;
 
   const results = (await axios.get(url)).data;
-  console.log(url);
-  console.log('HIT ENDPOINT');
   return res.json(results);
 }
