@@ -15,7 +15,7 @@ module.exports = {
 
     await interaction.deferReply();
     const titleSearchResults = await axios.get(`http://localhost:3000/movies/${movieTitle}`)
-    console.log(titleSearchResults.data.results);
+    console.log(titleSearchResults.data.results[0]);
     await interaction.editReply(`Logging search results`);
   },
 };
